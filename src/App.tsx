@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider } from 'styled-components';
+import Wrapper from './components/Wrapper/Wrapper';
+import AddBandForm from './modules/AddBandForm';
+
+const theme = {
+  white: '#ECECEF',
+  dark: '#0A0A0B',
+  gray: '#6B6B71',
+  red: '#D80404',
+  redLight: '#F2A9A9',
+  rounded: '.24rem'
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <AddBandForm />
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 
