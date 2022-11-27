@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Field = styled.input`
+const TextArea = styled.textarea`
   background-color: ${props => props.theme.white};
   border: none;
   border-radius: ${props => props.theme.rounded};
@@ -8,9 +8,9 @@ const Field = styled.input`
   font-family: 'Red Hat Text', sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  height: 2rem;
+  height: 100%;
   letter-spacing: 0.08em;
-  padding: 0 .8rem;
+  padding: .3rem .8rem;
   width: 100%;
 
   &:focus-visible {
@@ -18,4 +18,4 @@ const Field = styled.input`
   }
 `
 
-export default Field;
+export default TextArea
