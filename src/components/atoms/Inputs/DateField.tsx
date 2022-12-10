@@ -1,20 +1,20 @@
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { CalendarPickerView, DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { useState } from "react";
 import Field from "./TextField"
 
 interface DateFieldI {
   onChange: (value: any) => void
-  startDate: Date
+  startDate: Date | null
   placeholder: string
   disable?: boolean
+  views?: CalendarPickerView[]
 }
 
-const DateField = ({ onChange, startDate, placeholder, disable }: DateFieldI) => {
+const DateField = ({ onChange, startDate, placeholder, disable, views }: DateFieldI) => {
   const [ openPicker, setOpenPicker ] = useState<boolean>(false)
 
   const openDatePicker = () => {
-    console.log("🚀 ~ file: DateField.tsx ~ line 18 ~ openDatePicker ~ disable", disable)
     if(disable) return
     setOpenPicker(true)
   }
@@ -23,6 +23,7 @@ const DateField = ({ onChange, startDate, placeholder, disable }: DateFieldI) =>
       <DatePicker 
         label="Custom input"
         value={startDate}
+        views={ views }
         onChange={onChange}
         open={openPicker}
         closeOnSelect={true}

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const TextArea = styled.textarea`
+interface Props {
+  height?: string
+}
+
+const TextArea = styled.textarea<Props>`
   background-color: ${props => props.theme.white};
   border: none;
   border-radius: ${props => props.theme.rounded};
@@ -8,7 +12,7 @@ const TextArea = styled.textarea`
   font-family: 'Red Hat Text', sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  height: 100%;
+  height: ${props => props.height?? '100%'};
   letter-spacing: 0.08em;
   padding: .3rem .8rem;
   width: 100%;

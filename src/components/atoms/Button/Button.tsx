@@ -12,6 +12,7 @@ const Button = styled.button<Props>`
   background-color: ${props => props.secondary ? props.theme.gray : props.theme.red};
   border: none;
   border-radius: 0.25rem;
+  cursor: pointer;
 `
 
 export default Button;
