@@ -1,20 +1,26 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Button, { ButtonsContainer } from "../components/atoms/Button/Button";
 import Title from "../components/atoms/Title/Title";
 import { FormWrapper, Form, FormCard } from "../components/molecules/Form";
-import ArtistForm, { ArtistFormI } from "./components/ArtistForm";
+import AlbumForm, { AlbumFormI } from "./components/Album/AlbumForm";
+import ArtistForm, { ArtistFormI } from "./components/Artists/ArtistForm";
 import BandForm from "./components/BandForm";
 
 const AddBandForm = () => {
   const methods = useForm()
   const [ step, setStep ] = useState<number>(0)
   const [ members, setMembers ] = useState<ArtistFormI[]>([]);
+  const [ membersPast, setMembersPast ] = useState<ArtistFormI[]>([]);
 
   const forms = useMemo<JSX.Element[]>(() => [
     <BandForm />,
-    <ArtistForm artistList={members} sendArtist={(artist: ArtistFormI) => setMembers((past) => [...past, artist])} />
-  ], [members])
+    <ArtistForm artistList={members} sendArtist={(artist: ArtistFormI) => setMembers((past) => [...past, artist])} />,
+    <ArtistForm forPastMembers artistList={membersPast} sendArtist={(artist: ArtistFormI) => setMembersPast((past) => [...past, artist])} />,
+    <AlbumForm artistList={[]} sendArtist={function (artist: AlbumFormI): void {
+      throw new Error("Function not implemented.");
+    } } />
+  ], [members, membersPast])
 
   const onSubmitForm = (data: any) => {
     console.log("🚀 ~ file: AddBandForm.tsx ~ line 61 ~ onSubmitForm ~ data", data)

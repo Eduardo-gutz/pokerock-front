@@ -17,7 +17,7 @@ const ImagesNames = styled.div`
   color: ${props => props.theme.gray};
 `
 
-export const ImagesField = ({textButton}: any) => {
+export const ImagesField = ({textButton, multiple}: { textButton: string, multiple?: boolean }) => {
   const [ images, setImages ] = useState<File[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -40,7 +40,7 @@ export const ImagesField = ({textButton}: any) => {
       <Button type="button" onClick={() => inputRef.current?.click()}>
         { textButton }
       </Button>
-      <input type="file" hidden ref={inputRef} multiple />
+      <input type="file" hidden ref={inputRef} multiple={multiple} />
       <ImagesNames>
         {images.map((image) => (
           <p key={image.name}>{image.name}</p>

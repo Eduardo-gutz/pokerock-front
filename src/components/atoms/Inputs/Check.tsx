@@ -16,7 +16,7 @@ const CheckContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 6.6rem;
+  width: 7.6rem;
 `
 
 const CheckLabel = styled.label`

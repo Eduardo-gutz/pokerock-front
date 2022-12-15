@@ -72,7 +72,8 @@ const BandForm = () => {
           placeholder="Summary"
         />
       </InnerForm>
-      <ImagesField textButton="Add Images" />
+      <ImagesField textButton="Add Logo" />
+      <ImagesField textButton="Add Images" multiple />
     </>
   )
 }
