@@ -1,8 +1,11 @@
+import { FieldError } from "react-hook-form";
 import styled from "styled-components";
-
-const Field = styled.input`
+interface FiedProps {
+  error?: FieldError | undefined
+}
+const Field = styled.input<FiedProps>`
   background-color: ${props => props.theme.white};
-  border: none;
+  border: ${props => props.error ? `2px solid ${props.theme.red}` : 'none'};
   border-radius: ${props => props.theme.rounded};
   color: ${props => props.theme.gray};
   font-family: 'Red Hat Text', sans-serif;

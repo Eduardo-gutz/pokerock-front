@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import Button, { ButtonsContainer } from "../components/atoms/Button/Button";
-import Title from "../components/atoms/Title/Title";
-import { FormWrapper, Form, FormCard } from "../components/molecules/Form";
-import AlbumForm, { AlbumFormI } from "./components/Album/AlbumForm";
-import ArtistForm, { ArtistFormI } from "./components/Artists/ArtistForm";
-import BandForm from "./components/BandForm";
+import Button, { ButtonsContainer } from "../../../components/atoms/Button/Button";
+import Title from "../../../components/atoms/Title/Title";
+import { FormWrapper, Form, FormCard } from "../../../components/molecules/Form";
+import AlbumForm, { AlbumFormI } from "../../components/Album/AlbumForm";
+import ArtistForm, { ArtistFormI } from "../../components/Artists/ArtistForm";
+import BandForm from "../../components/BandForm";
 
 const AddBandForm = () => {
   const methods = useForm()

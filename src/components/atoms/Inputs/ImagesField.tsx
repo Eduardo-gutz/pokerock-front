@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 export const ImagesFieldContainer = styled.div`
   width: 100%;
   height: auto;
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
   display: flex;
   gap: 3rem;
 `

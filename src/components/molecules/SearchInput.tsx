@@ -1,3 +1,4 @@
+import { RefObject, useRef } from "react";
 import styled from "styled-components";
 import Icon from "../atoms/Icon/Icon";
 import Field from "../atoms/Inputs/TextField"
@@ -5,7 +6,7 @@ import Field from "../atoms/Inputs/TextField"
 const SearchField = styled(Field)`
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  width: 85%;
+  width: 100%;
 `
 
 const FieldContainer = styled.div`
@@ -15,7 +16,7 @@ const FieldContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 2rem;
-  `
+`
 
 const IconButton = styled.button`
   align-items: center;
@@ -24,7 +25,7 @@ const IconButton = styled.button`
   border: none;
   height: 2rem;
   justify-content: center;
-  width: 2rem;
+  width: 2.5rem;
 `
 
 const Divider = styled.div<{direction: any}>`
@@ -39,10 +40,34 @@ const SearchInput = () => {
       <SearchField />
       <Divider direction={'horizontal'} />
       <IconButton>
-        <Icon icon="bx bx-search"/> 
+        <Icon icon="bx bx-search"/>
       </IconButton>
     </FieldContainer>
   )
 }
 
 export default SearchInput;
+
+interface InputWithButtonProps {
+  icon: string
+  action: (value: string) => void
+}
+
+export const InputWithButton = ({ icon, action }: InputWithButtonProps) => {
+  const input = useRef<HTMLInputElement>()
+
+  const clickButton = () => {
+    const value = input.current?.value
+    if(value) action(value)
+  }
+
+  return (
+    <FieldContainer>
+      <SearchField ref={ input as RefObject<HTMLInputElement> } />
+      <Divider direction={'horizontal'} />
+      <IconButton type="button" onClick={clickButton} >
+        <Icon icon={ `bx bx-${ icon }` }/>
+      </IconButton>
+    </FieldContainer>
+  )
+}

@@ -2,11 +2,15 @@ import styled from "styled-components"
 import Card from "../atoms/Card/Card"
 import Field from "../atoms/Inputs/TextField"
 
-export const FormWrapper = styled.div`
+interface FormWrapperProps {
+  maxWidth?: string
+}
+
+export const FormWrapper = styled.div<FormWrapperProps>`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 63rem;
+  max-width: ${props => props.maxWidth?? '63rem'};
   width: 95%;
 `
 
@@ -20,6 +24,7 @@ export const FormCard = styled(Card)`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  row-gap: 1rem;
 ` 
 
 export const InnerForm = styled.div`

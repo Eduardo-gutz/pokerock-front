@@ -5,6 +5,7 @@ import { ImagesField } from "../../components/atoms/Inputs/ImagesField"
 import TextArea from "../../components/atoms/Inputs/TextArea"
 import Field from "../../components/atoms/Inputs/TextField"
 import { InnerForm, FieldsRow } from "../../components/molecules/Form"
+import { InputWithButton } from "../../components/molecules/SearchInput"
 
 export interface AddBandFormI {
   band: string
@@ -17,6 +18,10 @@ export interface AddBandFormI {
 
 const BandForm = () => {
   const { register, control, watch } = useFormContext<AddBandFormI>()
+
+  const verifyGender = (value: string) => {
+    console.log("🚀 ~ file: BandForm.tsx:23 ~ verifyGender ~ value", value)
+  }
   return (
     <>
       <InnerForm>
@@ -71,6 +76,9 @@ const BandForm = () => {
           {...register('band')}
           placeholder="Summary"
         />
+      </InnerForm>
+      <InnerForm>
+        <InputWithButton icon={"plus"} action={ verifyGender } />
       </InnerForm>
       <ImagesField textButton="Add Logo" />
       <ImagesField textButton="Add Images" multiple />

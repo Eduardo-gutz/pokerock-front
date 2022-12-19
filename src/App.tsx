@@ -1,7 +1,9 @@
 import './App.css';
 import { ThemeProvider } from 'styled-components';
 import Wrapper from './components/Wrapper/Wrapper';
-import AddBandForm from './modules/AddBandForm';
+// import AddBandForm from './modules/dashboard/Band/AddBandForm';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router/router';
 
 const theme = {
   white: '#ECECEF',
@@ -16,7 +18,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
-        <AddBandForm />
+        <RouterProvider router={ router } />
+        {/* <AddBandForm /> */}
       </Wrapper>
     </ThemeProvider>
   );
