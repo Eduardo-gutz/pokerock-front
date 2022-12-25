@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import NavBar from "../NavBar/NavBar";
 import Container from "../atoms/Container/Container";
+import useProtectRoutes from "../../hooks/UseProtectRoutes/UseProtectRoutes";
+import { protectedRoutes } from "../../router/protectedRoutes";
 
 interface Props {
   children: ReactNode
@@ -18,6 +20,7 @@ const Main = styled.main`
 `
 
 const Wrapper = ({ children }: Props) => {
+  useProtectRoutes(protectedRoutes)
   return (
     <Main>
       <NavBar />

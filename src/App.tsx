@@ -4,6 +4,10 @@ import Wrapper from './components/Wrapper/Wrapper';
 // import AddBandForm from './modules/dashboard/Band/AddBandForm';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router/router';
+import { Provider } from 'react-redux';
+import { store, persistor } from './store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const theme = {
   white: '#ECECEF',
@@ -14,14 +18,21 @@ const theme = {
   rounded: '.24rem'
 }
 
+const queryClient = new QueryClient()
+
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Wrapper>
-        <RouterProvider router={ router } />
-        {/* <AddBandForm /> */}
-      </Wrapper>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            <ThemeProvider theme={theme}>
+              <Wrapper>
+                <RouterProvider router={ router } />
+              </Wrapper>
+            </ThemeProvider>
+          </PersistGate>
+      </Provider>
+    </QueryClientProvider>
   );
 }
 

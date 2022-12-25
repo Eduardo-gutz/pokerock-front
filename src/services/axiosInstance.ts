@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axionInstance = axios.create({
-  baseURL: 'https://pokerock-api-dev.onrender.com',
+  baseURL: process.env.REACT_APP_API_URL,
   timeout: 100000,
   headers: {
     'Authorization': localStorage.getItem('accessToken')
