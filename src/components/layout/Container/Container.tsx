@@ -8,4 +8,9 @@ const Container = styled.div`
   padding: 2rem 0;
 `
 
+export const ContainerMain = styled.div`
+  width: 95.8%;
+  max-width: 77rem;
+`
+
 export default Container
